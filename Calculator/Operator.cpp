@@ -35,9 +35,9 @@ namespace{
 
 void Add::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
-	meaning.PopArg();//çíà÷åíèå èç ñòåêà
+	meaning.PopArg();
 	double SecNum = meaning.TopArg();
-	meaning.PopArg();//çíà÷åíèå âòîðîãî çíà÷ èç ñòåêà(óæå ïåðâîãî)
+	meaning.PopArg();
 	meaning.PushArg(Number + SecNum);
 }
 
