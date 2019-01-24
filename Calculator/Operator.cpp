@@ -6,49 +6,49 @@
 #include "Operator.h"
 
 namespace{
-	bool add_instruction() noexcept {
+	bool AddInstruction() noexcept {
 		AddCreator* add = new AddCreator;
-		Factory::get_instance()->make_instruction("+", add);
+		Factory::GetInstance()->MakeInstruction("+", add);
 
 		SubCreator* sub = new SubCreator;
-		Factory::get_instance()->make_instruction("-", sub);
+		Factory::GetInstance()->MakeInstruction("-", sub);
 		
 		MulCreator* mul = new MulCreator;
-		Factory::get_instance()->make_instruction("*", mul);
+		Factory::GetInstance()->MakeInstruction("*", mul);
 		
 		DivCreator* div = new DivCreator;
-		Factory::get_instance()->make_instruction("/", div);
+		Factory::GetInstance()->MakeInstruction("/", div);
 		
 		SqrtCreator* sqrt = new SqrtCreator;
-		Factory::get_instance()->make_instruction("SQRT", sqrt);
+		Factory::GetInstance()->MakeInstruction("SQRT", sqrt);
 		
 		PopCreator* pop = new PopCreator;
-		Factory::get_instance()->make_instruction("POP", pop);
+		Factory::GetInstance()->MakeInstruction("POP", pop);
 		
 		PrintCreator* print = new PrintCreator;
-		Factory::get_instance()->make_instruction("PRINT", print);
+		Factory::GetInstance()->MakeInstruction("PRINT", print);
 
 		return true;
 	}
-	bool fake = add_instruction();
+	bool fake = AddInstruction();
 }
 
-void Add::make_operation(Meaning& meaning) {
+void Add::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
-	meaning.PopArg();//значение из стека
+	meaning.PopArg();//Г§Г­Г Г·ГҐГ­ГЁГҐ ГЁГ§ Г±ГІГҐГЄГ 
 	double SecNum = meaning.TopArg();
-	meaning.PopArg();//значение второго знач из стека(уже первого)
+	meaning.PopArg();//Г§Г­Г Г·ГҐГ­ГЁГҐ ГўГІГ®Г°Г®ГЈГ® Г§Г­Г Г· ГЁГ§ Г±ГІГҐГЄГ (ГіГ¦ГҐ ГЇГҐГ°ГўГ®ГЈГ®)
 	meaning.PushArg(Number + SecNum);
 }
 
-void Substract::make_operation(Meaning& meaning) {
+void Substract::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
 	meaning.PopArg();
 	double SecNum = meaning.TopArg();
 	meaning.PushArg(SecNum - Number);
 }
 
-void Multiplicate::make_operation(Meaning& meaning) {
+void Multiplicate::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
 	meaning.PopArg();
 	double SecNum = meaning.TopArg();
@@ -56,7 +56,7 @@ void Multiplicate::make_operation(Meaning& meaning) {
 	meaning.PushArg(Number * SecNum);
 }
 
-void Division::make_operation(Meaning& meaning) {
+void Division::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
 	meaning.PopArg();
 	if (!Number)
@@ -66,7 +66,7 @@ void Division::make_operation(Meaning& meaning) {
 	meaning.PushArg(SecNum / Number);
 }
 
-void Sqrt::make_operation(Meaning& meaning) {
+void Sqrt::MakeOperation(Meaning& meaning) {
 	double Number = meaning.TopArg();
 	meaning.PopArg();
 	if (Number < 0)
@@ -74,11 +74,11 @@ void Sqrt::make_operation(Meaning& meaning) {
 	meaning.PushArg(sqrt(Number));
 }
 
-void Pop::make_operation(Meaning& meaning) {
+void Pop::MakeOperation(Meaning& meaning) {
 	meaning.PopArg();
 }
 
-void Print::make_operation(Meaning& meaning) {
+void Print::MakeOperation(Meaning& meaning) {
 	std::cout << "Answer is: "<< meaning.TopArg() << std::endl;
 }
 
