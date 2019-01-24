@@ -7,9 +7,9 @@
 #include <list>
 
 class Meaning {
-	std::stack <double> arg_stack;//стек аргументов(чисел)
-	std::map <std::string, double> variables;//мап переменных(а=2, например)
-	std::list <std::string> args; //двусвязный список аргументов(команд)
+	std::stack <double> arg_stack;
+	std::map <std::string, double> variables;
+	std::list <std::string> args;
 	int stack_size = 0;
 public:
 	void PopFront();//list
