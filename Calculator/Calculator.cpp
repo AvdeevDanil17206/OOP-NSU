@@ -14,12 +14,12 @@ void Calculator::start(std::ifstream &fin) {
 		meaning.GetArg(input_str);
 		
 		if (meaning.ListEmpty() == 0) {
-			operation = meaning.Front(); // получаем команду из листа
-			meaning.PopFront(); //удаляем полученное значение
+			operation = meaning.Front(); 
+			meaning.PopFront(); 
 
 			try {
-				std::auto_ptr<Operator> oper(Factory::get_instance()->get_operator(operation));
-				oper->make_operation(meaning);
+				std::auto_ptr<Operator> oper(Factory::GetInstance()->GetOperator(operation));
+				oper->MakeOperation(meaning);
 			}
 			catch (calc_exception& exc) {
 				std::cout << exc.what() << "\n";
