@@ -11,9 +11,9 @@ private:
 		std::map<std::string, OperCreator *> factory_map;
 public:
 		Factory(Factory&) = delete;
-		static Factory* get_instance();
-		void make_instruction(std::string key, OperCreator* value);
-		Operator* get_operator(std::string name);
+		static Factory* GetInstance();
+		void MakeInstruction(std::string key, OperCreator* value);
+		Operator* GetOperator(std::string name);
 		~Factory();
 };
 
